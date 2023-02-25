@@ -1,0 +1,341 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (8/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    67.1%
+  </span>
+  <span class="absValue">
+    (47/70)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Main$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Main$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Main$InvalidOption</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Main$UserInputOutOfBounds</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (12/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70.5%
+  </span>
+  <span class="absValue">
+    (55/78)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+<b class="nc">&nbsp;public class Main {</b>
+&nbsp;    static class UserInputOutOfBounds extends Exception {
+&nbsp;        public UserInputOutOfBounds(String message) {
+<b class="fc">&nbsp;            super(message);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    static class InvalidOption extends Exception {
+&nbsp;        public InvalidOption(String message) {
+<b class="fc">&nbsp;            super(message);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    private static int round = 1;</b>
+<b class="fc">&nbsp;    private static int width = 15;</b>
+<b class="fc">&nbsp;    private static int numOfMines = 30;</b>
+&nbsp;
+&nbsp;    public static int getNumOfMines() {
+<b class="fc">&nbsp;        return numOfMines;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static int getRound() {
+<b class="nc">&nbsp;        return round;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static int getWidth() {
+<b class="fc">&nbsp;        return width;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void selectDifficulty() throws InvalidOption {
+<b class="fc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        String difficulty = &quot;not yet selected&quot;;</b>
+<b class="fc">&nbsp;        while (!difficulty.equals(&quot;easy&quot;) &amp;&amp; !difficulty.equals(&quot;hard&quot;)) {</b>
+<b class="fc">&nbsp;            difficulty = scanner.next();</b>
+<b class="fc">&nbsp;            difficulty = difficulty.toLowerCase().strip();</b>
+<b class="fc">&nbsp;            if (!difficulty.equals(&quot;easy&quot;) &amp;&amp; !difficulty.equals(&quot;hard&quot;)) {</b>
+<b class="fc">&nbsp;                throw new InvalidOption(&quot;Not a valid String, please type &#39;easy&#39; or &#39;hard&#39;&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        if (difficulty.equals(&quot;easy&quot;)) {</b>
+<b class="fc">&nbsp;            width = 10;</b>
+<b class="fc">&nbsp;            numOfMines = 20;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (difficulty.equals(&quot;hard&quot;)) {</b>
+<b class="fc">&nbsp;            width = 15;</b>
+<b class="fc">&nbsp;            numOfMines = 30;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void onStart() {
+<b class="fc">&nbsp;        Grid grid = new Grid(width, numOfMines);</b>
+&nbsp;        // called once to fill grid and draw grid
+&nbsp;        // use drawGrid to redraw subsequent renders !
+<b class="fc">&nbsp;        System.out.println(&quot;\nRound - &quot; + &quot;Start !&quot;);</b>
+<b class="fc">&nbsp;        grid.createGrid();</b>
+<b class="fc">&nbsp;        System.out.print(&quot;\n&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static ArrayList&lt;Integer&gt; getCordFromInput() throws InputMismatchException, UserInputOutOfBounds {
+&nbsp;
+<b class="fc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.print(&quot;\nEnter X cord: &quot;);</b>
+<b class="fc">&nbsp;        int X = scanner.nextInt();</b>
+<b class="fc">&nbsp;        System.out.print(&quot;Enter Y cord: &quot;);</b>
+<b class="fc">&nbsp;        int Y = scanner.nextInt();</b>
+<b class="fc">&nbsp;        if (X &gt; width || Y &gt; width || X &lt;= 0 || Y &lt;= 0) {</b>
+<b class="fc">&nbsp;            throw new UserInputOutOfBounds(&quot;Input number has to stay within boundary of 1 - &quot; + width);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return new ArrayList&lt;&gt;() {</b>
+&nbsp;            {
+<b class="fc">&nbsp;                add(X);</b>
+<b class="fc">&nbsp;                add(Y);</b>
+&nbsp;            }
+&nbsp;        };
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean checkMine(int X, int Y) {
+<b class="fc">&nbsp;        if (Tiles.checkRevealMine(new ArrayList&lt;&gt;() {</b>
+&nbsp;            {
+<b class="fc">&nbsp;                add(X);</b>
+<b class="fc">&nbsp;                add(Y);</b>
+&nbsp;            }
+&nbsp;        })) {
+<b class="nc">&nbsp;            Grid.drawGrid(X, Y);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;\n\nBOOM ! You lose&quot;);</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void runGameInitial(){
+<b class="nc">&nbsp;        System.out.println(&quot;\nMINESWEEPER IN THE COMMAND LINE&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Config your Minesweepers, follow the prompts&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Select level of difficulty (type easy, or hard).&quot;);</b>
+&nbsp;
+&nbsp;        while (true) {
+&nbsp;            try {
+<b class="nc">&nbsp;                selectDifficulty();</b>
+<b class="nc">&nbsp;                break;</b>
+<b class="nc">&nbsp;            } catch (Exception e) {</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage());</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+<b class="nc">&nbsp;        onStart();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void repeatGame(boolean testRun){
+<b class="fc">&nbsp;        boolean didLose = false;</b>
+<b class="fc">&nbsp;        while (!didLose) {</b>
+<b class="fc">&nbsp;            switch (Tiles.checkWin(Grid.getListTilesMap())) {</b>
+&nbsp;                case &quot;CONTINUE&quot; -&gt; {
+&nbsp;
+&nbsp;                    // get and validate user coordinate input
+&nbsp;                    ArrayList&lt;Integer&gt; cordFromInput;
+&nbsp;                    while (true) {
+&nbsp;                        try {
+<b class="fc">&nbsp;                            cordFromInput = getCordFromInput();</b>
+<b class="fc">&nbsp;                            break;</b>
+<b class="nc">&nbsp;                        } catch (InputMismatchException e) {</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Integers only please !&quot;);</b>
+<b class="nc">&nbsp;                        } catch (UserInputOutOfBounds e) {</b>
+<b class="nc">&nbsp;                            System.out.println(e.getMessage());</b>
+<b class="nc">&nbsp;                        }</b>
+&nbsp;                    }
+&nbsp;                    // prints no of round and a bar for each new round
+<b class="fc">&nbsp;                    System.out.println(&quot;&quot;);</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\u001B[41m&quot; + &quot; * &quot;.repeat(width) + &quot;\u001B[0m&quot;);</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nRound - &quot; + (round));</b>
+&nbsp;
+&nbsp;                    // check if user has stepped on mine
+<b class="fc">&nbsp;                    didLose = checkMine(cordFromInput.get(0), cordFromInput.get(1));</b>
+<b class="fc">&nbsp;                    if (didLose)</b>
+<b class="nc">&nbsp;                        continue;</b>
+<b class="fc">&nbsp;                    Grid.drawGrid(cordFromInput.get(0), cordFromInput.get(1));</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;&quot;);</b>
+<b class="fc">&nbsp;                    round++;</b>
+<b class="fc">&nbsp;                }</b>
+&nbsp;                case &quot;WIN&quot; -&gt; {
+<b class="nc">&nbsp;                    System.out.println(&quot;\nYou win !&quot;);</b>
+&nbsp;                    return;
+&nbsp;                }
+&nbsp;
+&nbsp;            }
+<b class="fc">&nbsp;            if(testRun) didLose=true;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        runGameInitial();</b>
+<b class="nc">&nbsp;        repeatGame(false);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-25 23:38</div>
+</div>
+</body>
+</html>

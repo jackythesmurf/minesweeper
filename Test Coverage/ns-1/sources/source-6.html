@@ -1,0 +1,171 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Tiles</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Tiles (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Tiles</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (8/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.8%
+  </span>
+  <span class="absValue">
+    (24/29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.Random;
+&nbsp;
+&nbsp;public class Tiles {
+<b class="fc">&nbsp;    private ArrayList&lt;Integer&gt; location = new ArrayList&lt;&gt;();</b>
+&nbsp;    private Boolean isRevealed;
+&nbsp;    private String hiddenImg;
+&nbsp;
+<b class="fc">&nbsp;    public Tiles(ArrayList&lt;Integer&gt; location, Boolean isRevealed, String hiddenImg) {</b>
+<b class="fc">&nbsp;        this.location = location;</b>
+<b class="fc">&nbsp;        this.isRevealed = isRevealed;</b>
+<b class="fc">&nbsp;        this.hiddenImg = hiddenImg;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Integer&gt; getLocation() {
+<b class="nc">&nbsp;        return location;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Boolean getRevealed() {
+<b class="fc">&nbsp;        return isRevealed;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getHiddenImg() {
+<b class="fc">&nbsp;        return hiddenImg;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setHiddenImg(String str) {
+<b class="fc">&nbsp;        this.hiddenImg = &quot; &quot; + str + &quot; &quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setIsRevealed() {
+<b class="fc">&nbsp;        this.isRevealed = true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void drawTileByType(ArrayList&lt;Integer&gt; checkLoc, Map&lt;ArrayList&lt;Integer&gt;, Tiles&gt; listTilesMap) {
+<b class="fc">&nbsp;        if (listTilesMap.get(checkLoc) != null) {</b>
+<b class="fc">&nbsp;            if (listTilesMap.get(checkLoc).getRevealed()) {</b>
+<b class="fc">&nbsp;                System.out.print(listTilesMap.get(checkLoc).getHiddenImg());</b>
+&nbsp;            } else {
+<b class="fc">&nbsp;                System.out.print(&quot;\u001B[35m&quot; + &quot; * &quot; + &quot;\u001B[0m&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public static String checkWin(Map&lt;ArrayList&lt;Integer&gt;, Tiles&gt; listTilesMap) {
+<b class="fc">&nbsp;        int hasRevealed = 0;</b>
+<b class="fc">&nbsp;        int totalNumbered = 0;</b>
+<b class="fc">&nbsp;        for (ArrayList&lt;Integer&gt; key : listTilesMap.keySet()) {</b>
+<b class="fc">&nbsp;            if (listTilesMap.get(key).getClass().equals(Numbered.class)) {</b>
+<b class="fc">&nbsp;                totalNumbered++;</b>
+<b class="fc">&nbsp;                if (listTilesMap.get(key).isRevealed)</b>
+<b class="nc">&nbsp;                    hasRevealed++;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        if (hasRevealed == totalNumbered)</b>
+<b class="nc">&nbsp;            return &quot;WIN&quot;;</b>
+<b class="fc">&nbsp;        return &quot;CONTINUE&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean checkRevealMine(ArrayList&lt;Integer&gt; checkLoc) {
+<b class="fc">&nbsp;        if (Grid.getListTilesMap().get(checkLoc).getClass().equals(Mine.class)) {</b>
+<b class="nc">&nbsp;            Grid.getListTilesMap().get(checkLoc).setIsRevealed();</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-25 23:38</div>
+</div>
+</body>
+</html>
