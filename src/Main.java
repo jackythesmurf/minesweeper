@@ -92,7 +92,7 @@ public class Main {
         return false;
     }
 
-    public static void main(String[] args) {
+    public static void runGameInitial(){
         System.out.println("\nMINESWEEPER IN THE COMMAND LINE");
         System.out.println("Config your Minesweepers, follow the prompts");
         System.out.println("Select level of difficulty (type easy, or hard).");
@@ -106,7 +106,9 @@ public class Main {
             }
         }
         onStart();
+    }
 
+    public static void repeatGame(boolean testRun){
         boolean didLose = false;
         while (!didLose) {
             switch (Tiles.checkWin(Grid.getListTilesMap())) {
@@ -143,6 +145,11 @@ public class Main {
                 }
 
             }
+            if(testRun) didLose=true;
         }
+    }
+    public static void main(String[] args) {
+        runGameInitial();
+        repeatGame(false);
     }
 }

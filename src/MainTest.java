@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.*;
@@ -73,14 +73,71 @@ class MainTest {
     }
 
     @Test
-    void getCordFromInput() {
+    void getCordFromInputValid() throws Main.UserInputOutOfBounds {
+        setUserInput("1\n1");
+        ArrayList<Integer> cordTest1 = new ArrayList<>() {
+            {
+                add(1);
+                add(1);
+            }
+        };
+        ArrayList<Integer> returnedCord = Main.getCordFromInput();
+        assertEquals(cordTest1, returnedCord);
+
     }
 
     @Test
-    void checkMine() {
+    void getCordFromInputShouldThrowInputError() throws Main.UserInputOutOfBounds {
+        setUserInput("str");
+        assertThrows(InputMismatchException.class, Main::getCordFromInput);
     }
 
     @Test
-    void main() {
+    void getCordFromInputShouldThrowOutOfBoundsError() throws Main.UserInputOutOfBounds {
+
+        ArrayList<Integer> smallBoundary = new ArrayList<>() {
+            {
+                add(0);
+                add(5);
+            }
+        };
+        ArrayList<Integer> bigBoundary = new ArrayList<>() {
+            {
+                add(Main.getWidth() + 1);
+                add(0);
+            }
+        };
+        ArrayList<Integer> negative = new ArrayList<>() {
+            {
+                add(-1);
+                add(0);
+            }
+        };
+
+        ArrayList<ArrayList<Integer>> outOfBoundInputs = new ArrayList<>() {
+            {
+                add(smallBoundary);
+                add(bigBoundary);
+                add(negative);
+            }
+        };
+
+        for (ArrayList<Integer> invalidInputs : outOfBoundInputs) {
+            setUserInput(String.valueOf(invalidInputs.get(0)) + "\n" + String.valueOf(invalidInputs.get(1)));
+            assertEquals("Input number has to stay within boundary of 1 - " + Main.getWidth(),
+                    assertThrows(Main.UserInputOutOfBounds.class, Main::getCordFromInput).getMessage());
+        }
     }
+
+    // should assert no errors
+    @Test
+
+    void sampleGame() {
+
+        setUserInput("1\n1");
+        Main.repeatGame(true);
+
+    }
+ 
+
 }
