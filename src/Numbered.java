@@ -5,15 +5,12 @@ public class Numbered extends Tiles{
     private int surroundedMines = 0;
     private String[] colourList = new String[] {"\u001B[34m", "\u001B[32m", "\u001B[33m"};
 
-
     public Numbered(ArrayList<Integer> location) {
         super(location, false, " - ");
     }
-
     public int getSurroundedMines() {
         return surroundedMines;
     }
-
     public void increment(){
         surroundedMines++;
         String colour = switch (surroundedMines) {
@@ -23,7 +20,6 @@ public class Numbered extends Tiles{
         };
         setHiddenImg(colour + String.valueOf(surroundedMines) + "\u001B[0m");
     }
-
     public static void generateNumbered(Map<ArrayList<Integer>, Tiles> listTilesMap){
         for (ArrayList<Integer> key : listTilesMap.keySet()) {
             // Increment all surrounding Numbered tiles once a Mine tile is found

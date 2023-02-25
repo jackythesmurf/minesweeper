@@ -11,12 +11,12 @@ public class Mine extends Tiles {
         Random random = new Random();
         while ( numOfMines > 0){
             ArrayList<Integer> mineLocation = new ArrayList<>();
-//             grid renders nums > 0
+//          grid renders nums > 0
             int randI = random.nextInt((width)) + 1;
             int randY = random.nextInt((width)) + 1;
             mineLocation.add(randI);
             mineLocation.add(randY);
-            // ensure mines location are distinct
+            // ensure mine location are distinct
             if (listTilesMap.get(mineLocation) != null) continue;
             // if distinct add to mine to list
             listTilesMap.put(mineLocation, new Mine(mineLocation));
