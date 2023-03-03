@@ -24,6 +24,7 @@ There are three main classes in this application, the `Main` class mainly which 
 I struggled on the feature where upon revealing an empty square, it should also reveal surrounding squares, creating a cascading effect. The first step I took was to search up the algorthirm's name that used in minesweeper, and going to online to find visualisations and pseudocode to help me better understand the algorithm. I then did my own implementation with the guidance of the pseudocode. 
 
 #### What I learnt
-During this process I finally understand that recursion was **LIFO** (last in first out). 
+During this process I finally understood that recursion was **LIFO** (last in first out). 
 This was the simple term which had made recursion much more comprehensible for me. 
+Writing tests for the application also taught me that my methods in OOP should be as granular as possible, and writing unit tests can help improve the structure and design of your software, as it enforces one to reflect if a certain method can be broken down further.
 
